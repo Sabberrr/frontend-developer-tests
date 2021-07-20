@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Dropdown from "react-bootstrap/Dropdown";
+import { Dropdown } from "react-bootstrap";
 const GenderFilter: FC<any> = ({ toggleGender }) => {
 	return (
 		<div style={{ display: "block", width: 700, padding: 30 }}>
 			<Dropdown>
-				<Dropdown.Toggle variant="success">Open Menu</Dropdown.Toggle>
+				<Dropdown.Toggle variant="success">Filter by Gender</Dropdown.Toggle>
 				<Dropdown.Menu>
 					<Dropdown.Item
 						href="#"

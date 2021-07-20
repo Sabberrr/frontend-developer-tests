@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FC, ReactNode } from "react";
 import Countries from "./Countries";
-import GenderFilter from "./genderFilter";
+import GenderFilter from "./GenderFilter";
 import { userCountriesAPI } from "../../api/userCall";
 //types
 import { userType } from "../../types/";
@@ -29,7 +29,11 @@ export default function Main() {
 	}
 	const toggleDisplay = function (country: string) {
 		let obj: countriesToggleType = displayed;
-		if (!obj[country]) obj[country] = true;
+		if (obj[country]) {
+			obj[country] = !obj[country];
+		} else {
+			obj[country] = true;
+		}
 		Object.keys(obj).forEach((val) => {
 			if (val !== country) obj[val] = false;
 		});

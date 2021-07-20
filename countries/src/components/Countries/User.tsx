@@ -3,14 +3,16 @@ import { userType } from "../../types/ApiCallTypes";
 const User: FC<any> = ({ userData }) => {
 	console.log(userData);
 	return (
-		<div>
-			<div>{userData["name"]["first"] + userData["name"]["last"]}</div>
-			<div>{userData["gender"]}</div>
-			<div>
-				{userData["location"]["city"] + ", " + userData["location"]["state"]}
-			</div>
-			<div>{userData["registered"]["date"]}</div>
-		</div>
+		<tbody>
+			<tr>
+				<td>{userData["name"]["first"] + " " + userData["name"]["last"]}</td>
+				<td>{userData["gender"]}</td>
+				<td>
+					{userData["location"]["city"] + ", " + userData["location"]["state"]}
+				</td>
+				<td>{userData["registered"]["date"]}</td>
+			</tr>
+		</tbody>
 	);
 };
 

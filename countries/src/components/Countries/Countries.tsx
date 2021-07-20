@@ -1,9 +1,7 @@
 import React, { useEffect, FC } from "react";
 import User from "./User";
 import { userType } from "../../types";
-// registered:
-// age: 16;
-// date: "2005-12-24T00:32:36.931Z";
+import Table from "react-bootstrap/Table";
 const Countries: FC<any> = ({ data, toggleDisplay, displayed, gender }) => {
 	let countryNode = data[0]["location"]["country"];
 	let genderDisplay: string = "";
@@ -14,8 +12,8 @@ const Countries: FC<any> = ({ data, toggleDisplay, displayed, gender }) => {
 	const sortedAndDisplayUsers = function () {
 		let sortedUsers = data.sort((a: any, b: any) => {
 			return (
-				Date.parse(a["registered"]["date"]) -
-				Date.parse(b["registered"]["date"])
+				Date.parse(b["registered"]["date"]) -
+				Date.parse(a["registered"]["date"])
 			);
 		});
 		return sortedUsers.map((val: any) => {
@@ -34,7 +32,21 @@ const Countries: FC<any> = ({ data, toggleDisplay, displayed, gender }) => {
 				{countryNode}
 			</button>
 
-			{displayed[countryNode] === true ? sortedAndDisplayUsers() : ""}
+			{displayed[countryNode] === true ? (
+				<Table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Gender</th>
+							<th>Location</th>
+							<th>RegisterDate</th>
+						</tr>
+					</thead>
+					{sortedAndDisplayUsers()}
+				</Table>
+			) : (
+				""
+			)}
 		</div>
 	);
 };
